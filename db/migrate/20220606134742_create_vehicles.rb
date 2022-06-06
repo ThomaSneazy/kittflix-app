@@ -6,7 +6,7 @@ class CreateVehicles < ActiveRecord::Migration[6.1]
       t.integer :year
       t.string :category
       t.text :descritpion
-      t.boolean :available default: true
+      t.boolean :available, default: true
 
       t.timestamps
     end
