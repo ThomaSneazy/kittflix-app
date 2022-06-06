@@ -47,4 +47,3 @@ ActiveRecord::Schema.define(version: 2022_06_06_142017) do
 
   add_foreign_key "vehicles", "users"
 end
-
