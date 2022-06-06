@@ -5,7 +5,7 @@ class CreateVehicles < ActiveRecord::Migration[6.1]
       t.decimal :price_per_day
       t.integer :year
       t.string :category
-      t.text :descritpion
+      t.text :description
       t.boolean :available, default: true
 
       t.timestamps
