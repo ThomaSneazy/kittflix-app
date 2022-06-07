@@ -16,6 +16,7 @@ user.password = 'valid_password'
 user.password_confirmation = 'valid_password'
 user.save!
 
+
 Vehicle.create(name: "Kite", year: "1982", category: "car", description: "Offrez-vous la voiture de la série télévisée K2000. La K.I.T.T", user_id: user.id)
 Vehicle.create(name: "Batmobile", year: "2008", category: "car", description: "Offrez-vous la voiture de Batman", user_id: user.id)
 Vehicle.create(name: "Ford Gran Torino", year: "1972", category: "car", description: "Offrez-vous la voiture de la série télévisée Starsky & Hutch.", user_id: user.id)
