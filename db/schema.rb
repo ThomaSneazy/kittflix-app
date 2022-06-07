@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 2022_06_06_150133) do
     t.decimal "price_per_day"
     t.integer "year"
     t.string "category"
-    t.text "descritpion"
+    t.text "description"
     t.boolean "available", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
