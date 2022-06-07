@@ -5,7 +5,7 @@
         <%= link_to vehicles_path do %>
            <%= image_tag "KITTFLIX.png" %>
         <% end %>
-        </div>
+       </div>
          <div class="navbar-links">
             <ul>
               <li>
@@ -19,10 +19,17 @@
               </li>
             </ul>
           </div>
+
+          <li class="nav-item dropdown">
            <div class="avatar-square">
-              <%= link_to "#", root_path%>
-              <%= image_tag "profilnetflix.jpg" %>
-           </div>
+            <%= image_tag "profilnetflix.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <div class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                <%= link_to "Profil", "#", class: "dropdown-item" %>
+                <%= link_to "Log Out", "#", class: "dropdown-item" %>
+                <%#= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              </div>
+            </div>
+          </li>
        </div>
     </nav>
 </div>
