@@ -16,3 +16,16 @@
 body{
   background-color: #0D0D0D;
 }
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  }
+  .div1 { grid-area: 5 / 2 / 2 / 3; }
+  .div2 { grid-area: 2 / 3 / 3 / 4; }
+  .div3 { grid-area: 2 / 4 / 3 / 5; }
+  .div4 { grid-area: 3 / 4 / 4 / 5; }
+  .div5 { grid-area: 3 / 3 / 4 / 4; }
