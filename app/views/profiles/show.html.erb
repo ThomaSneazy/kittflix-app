@@ -1,0 +1,21 @@
+
+
+<div style="margin: 20px">
+  <h1 style="color:white">Profile Page</h1>
+  <h5 style="color:white">All your cars</h5>
+</div>
+
+
+<h3 style="color:hotpink; text-align: center"><%= @user.email %></h3>
+<h3 style="color:white; text-align: center"><%= @user.first_name %>  <%= @user.last_name %></h3>
+<img src="<%= @user.photo_url %>" alt="" style="width: 200px; border-radius: 10px">
+
+
+<div style="display: flex; flex-direction: column">
+    <% @vehicles.each do |vehicle| %>
+        <ul>
+          <li><%= vehicle.name %></li>
+          <li><%= vehicle.year %></li>
+        </ul>
+    <% end %>
+</div>
