@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   has_many :vehicles
   has_many :bookings
-  has_many :reviews, through: :vehicules
+  has_many :reviews, through: :vehicles
 end
