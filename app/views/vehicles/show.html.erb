@@ -1,0 +1,61 @@
+<div class="container mt-3 mb-7">
+
+  <div class="row">
+
+    <div class="col-6">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)"></div>
+    </div>
+
+    <div class="col-6">
+      <div class="cards">
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)"></div>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)"></div>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)"></div>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div>
+  <p><%= @vehicle.description %></p>
+</div>
+
+<div class="card-product">
+  <img src="" />
+  <div class="card-product-infos">
+    <h2> <%= @vehicle.name %></h2>
+    <%= @vehicle.price_per_day %>
+    <p>Year : <%= @vehicle.year %></p>
+    <p>Type : <%= @vehicle.category%></p>
+    <p><%= @vehicle.available ? "available" : "not available for now" %></p>
+  </div>
+</div>
+
+<div class="bg-danger text-white">
+  <h3>CHOOSE YOUR DATES</h3>
+
+<div>
+  <div>
+    <label for="start_date">Start Date</label>
+    <input type="date" name="start_date" id="start_date">
+  </div>
+  <div>
+    <label for="end_date">End Date</label>
+    <input type="date" name="end_date" id="end_date">
+  </div>
+</div>
+
+  <div>
+    <button type="button" class="btn btn-success">
+      <%= link_to "Rent", booking_path %>
+    </button>
+  </div>
+
+</div>
+
+<br>
+ <button type="button" class="btn btn-danger">
+    <%= link_to "Back to home", vehicles_path %>
+  </button>
