@@ -12,6 +12,7 @@ class VehiclesController < ApplicationController
   end
 
   def create
+    authorize @vehicle
     @vehicle = Vehicle.new(vehicle_params)
     @vehicle.save
     if @vehicle.save
