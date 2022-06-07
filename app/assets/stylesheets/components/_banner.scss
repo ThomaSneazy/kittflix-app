@@ -1,0 +1,26 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  border: 3px solid rgb(0, 0, 0);
+}
+
+.container-banner{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.banner h1 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin-top: 40px;
+  color: #ECECEC;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 60px;
+  font-weight: bold;
+  margin-right: 60px;
+  text-shadow: 2px 2px 3px rgb(160, 160, 160);
+}
+
+.small-h1{
+  font-size: 20px;
+}

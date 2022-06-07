@@ -1,0 +1,28 @@
+<div id="app">
+   <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+     <div class="container">
+       <div class="navbar-brand">
+        <%= link_to vehicles_path do %>
+           <%= image_tag "KITTFLIX.png" %>
+        <% end %>
+        </div>
+         <div class="navbar-links">
+            <ul>
+              <li>
+              <%= link_to "Home" %>
+              </li>
+              <li>
+              <%= link_to "Promotions" %>
+              </li>
+              <li>
+              <%= link_to "My List" %>
+              </li>
+            </ul>
+          </div>
+           <div class="avatar-square">
+              <%= link_to "#", root_path%>
+              <%= image_tag "profilnetflix.jpg" %>
+           </div>
+       </div>
+    </nav>
+</div>
