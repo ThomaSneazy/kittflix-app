@@ -8,11 +8,19 @@
 require 'open-uri'
 
 Vehicle.destroy_all
-Vehicle.create(name: "Kite", year: "1982", category: "car", description: "Offrez-vous la voiture de la série télévisée K2000. La K.I.T.T", user_id: 1)
-Vehicle.create(name: "Batmobile", year: "2008", category: "car", description: "Offrez-vous la voiture de Batman", user_id: 1)
-Vehicle.create(name: "Ford Gran Torino", year: "1972", category: "car", description: "Offrez-vous la voiture de la série télévisée Starsky & Hutch.", user_id: 1)
-Vehicle.create(name: "Ecto-1", year: "1984", category: "car", description: "Offrez-vous la voiture des GhostBusters. La Ecto-1 !", user_id: 1)
-delorean = Vehicle.new(name: "Delorean", year: "1986", category: "car", description: "Offrez-vous la voiture de Retour vers le Futur. La Delorean !", user_id: 1)
+User.destroy_all
+
+user = User.new
+user.email = 'test@example.com'
+user.password = 'valid_password'
+user.password_confirmation = 'valid_password'
+user.save!
+
+Vehicle.create(name: "Kite", year: "1982", category: "car", description: "Offrez-vous la voiture de la série télévisée K2000. La K.I.T.T", user_id: user.id)
+Vehicle.create(name: "Batmobile", year: "2008", category: "car", description: "Offrez-vous la voiture de Batman", user_id: user.id)
+Vehicle.create(name: "Ford Gran Torino", year: "1972", category: "car", description: "Offrez-vous la voiture de la série télévisée Starsky & Hutch.", user_id: user.id)
+Vehicle.create(name: "Ecto-1", year: "1984", category: "car", description: "Offrez-vous la voiture des GhostBusters. La Ecto-1 !", user_id: user.id)
+delorean = Vehicle.new(name: "Delorean", year: "1986", category: "car", description: "Offrez-vous la voiture de Retour vers le Futur. La Delorean !", user_id: user.id)
 delorean.save
 
 User.create(first_name: "toto", last_name: "lebeau")
