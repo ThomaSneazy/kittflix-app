@@ -24,8 +24,15 @@
            <div class="avatar-square">
             <%= image_tag "profilnetflix.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                <%= link_to "Profil", "#", class: "dropdown-item" %>
-                <%= link_to "Log Out", "#", class: "dropdown-item" %>
+              <% if user_signed_in? %>
+                <%= link_to "Profil", profile_path(current_user), class: "dropdown-item" %>
+                <%= link_to "Log out", destroy_user_session_path, method: :delete ,  class: "dropdown-item" %>
+                <%# <%= link_to 'Edit profile', edit_user_registration_path, class: "dropdown-item" %>
+                <% else %>
+                <%= link_to 'Sign up',  new_user_registration_path, class:'dropdown-item' %>
+                <%= link_to 'Sign in', user_session_path, class: "dropdown-item" %>
+                <% end %>
+                <%# <%= link_to "Log Out", "#", class: "dropdown-item" %>
                 <%#= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </div>
             </div>
