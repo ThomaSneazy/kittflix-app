@@ -18,15 +18,15 @@ user.save!
 img_user = URI.open('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwM5T40YEBEnWQvgQb8tGAMb1FrECSLdcRSQ&usqp=CAU')
 user.photo.attach(io: img_user, filename: "1.jpeg", content_type: 'image/jpeg')
 
-delorean = Vehicle.new(name: "Delorean", year: "1986", category: "car", description: "Offrez-vous la voiture de Retour vers le Futur. La Delorean !", user_id: user.id)
+delorean = Vehicle.new(name: "Delorean", year: "1986", category: "car", description: "Rent the famous car from Back To The Future, the Delorean !", user_id: user.id)
 delorean.save
-kitt = Vehicle.new(name: "Kitt", year: "1982", category: "car", description: "Offrez-vous la voiture de la série télévisée K2000. La K.I.T.T", user_id: user.id)
+kitt = Vehicle.new(name: "Kitt", year: "1982", category: "car", description: "Rent the famous car from the TV show Knight Rider, K.I.T.T", user_id: user.id)
 kitt.save
-batmobile = Vehicle.new(name: "Batmobile", year: "2008", category: "car", description: "Offrez-vous la voiture de Batman", user_id: user.id)
+batmobile = Vehicle.new(name: "Batmobile", year: "2008", category: "car", description: "Rent the fantastic Batmobile from The Dark Knight movie", user_id: user.id)
 batmobile.save
-torino = Vehicle.new(name: "Ford Gran Torino", year: "1972", category: "car", description: "Offrez-vous la voiture de la série télevisée Starsky & Hutch", user_id: user.id)
+torino = Vehicle.new(name: "Ford Gran Torino", year: "1972", category: "car", description: "Rent the famous Gran Torino from the TV show Starsky & Hutch", user_id: user.id)
 torino.save
-ecto = Vehicle.new(name: "Ecto-1", year: "1984", category: "car", description: "Offrez-vous la voiture des GhostBusters. La Ecto-1 !", user_id: user.id)
+ecto = Vehicle.new(name: "Ecto-1", year: "1984", category: "car", description: "Rent the iconic GhostBusters car, the Ecto-1 !", user_id: user.id)
 ecto.save
 tonnerre = Vehicle.new(name: "Tonnerre Mécanique", year: "1985", category: "motorbike", description: "Offrez-vous la moto de la série Tonnerre Mécanique", user_id: user.id)
 tonnerre.save
