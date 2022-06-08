@@ -1,1 +1,54 @@
-<h1>Hello</h1>
+
+<div class="parent mt-3 mx-5">
+    <div class="div1 -2 m-2">
+      <%= cl_image_tag @vehicle.photos[0].key, height: 320, width: 650, crop: :fill %>
+    </div>
+    <div class="div2 m-2">
+      <%= cl_image_tag @vehicle.photos[1].key, height: 150, width: 330, crop: :fill %>
+    </div>
+    <div class="div3 m-2">
+      <%= cl_image_tag @vehicle.photos[2].key, height: 150, width: 330, crop: :fill %>
+    </div>
+    <div class="div4 mt-2 m-2">
+      <%= cl_image_tag @vehicle.photos[3].key, height: 150, width: 330, crop: :fill %>
+    </div>
+    <div class="div5 mt-2 m-2">
+      <%= cl_image_tag @vehicle.photos[4].key, height: 150, width: 330, crop: :fill %>
+    </div>
+</div>
+
+
+<div class="card-description text-start bg-transparent text-white">
+<h2><strong> <%= @vehicle.name %></strong></h2>
+    <dl class="row">
+      <dt class="col-sm-2">Year</dt>
+      <dd class="col-sm-4"><%= @vehicle.year %></dd>
+    <dl class="row">
+      <dt class="col-sm-2">Type</dt>
+      <dd class="col-sm-4"><%= @vehicle.category %></dd>
+    <dl class="row">
+      <dt class="col-sm-2">Available</dt>
+      <dd class="col-sm-4"><%= @vehicle.available ? "Yes" : "Not for the moment" %></dd>
+    <dl class="row">
+      <dt class="col-sm-2">Price/day</dt>
+      <dd class="col-sm-4"><%= @vehicle.price_per_day %>10.000 £</dd>
+    <div>
+      <p class="text-start"><%= @vehicle.description %></p>
+    </div>
+</div>
+
+<div class="card-booking bg-dark text-white">
+  <div class="text-center mt-0">
+    <h3>Choose your dates</h3>
+  </div>
+
+
+  <%= simple_form_for [@vehicle, @booking] do  |f| %>
+  <%= f.input :start_date, as: :date, html5: true %>
+  <%= f.input :end_date, as: :date, html5: true %>
+  <%= f.button :submit, 'Rent', class: "btn btn-danger" %>
+  <% end %>
+
+</div>
+
+<%# <%= flash[:notice] = 'Successfully checked in' %>
