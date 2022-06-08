@@ -3,3 +3,35 @@
     <h1><span class="small-h1">bring  </span><strong>FICTION</strong><span class="small-h1">to</span><strong> <br>REALITY</strong></h1>
   </div>
 </div>
+    <h3 class="title-card">Popular on Kittflix</h3>
+<div class="cards">
+      <% @vehicles.each do |vehicle| %>
+        <%= link_to vehicle_path(vehicle), :action => 'go' do %>
+          <div class="card-category" style="background-image: linear-gradient(rgb(0 0 0 / 30%),rgb(0 0 0 / 30%)), url('')">
+            <h3><%= vehicle.name %></h3>
+          </div>
+        <% end %>
+      <% end %>
+      </div>
+
+    <h3 class="title-card">Top picks for you</h3>
+    <div class="cards">
+      <% @vehicles.each do |vehicle| %>
+              <%= link_to vehicle_path(vehicle), :action => 'go' do %>
+              <div class="card-category" style="background-image: linear-gradient(rgb(0 0 0 / 30%),rgb(0 0 0 / 30%)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+                <h3><%= vehicle.name %></h3>
+              </div>
+              <% end %>
+            <% end %>
+            </div>
+
+    <h3 class="title-card">Only on Kittflix</h3>
+    <div class="cards">
+      <% @vehicles.each do |vehicle| %>
+              <%= link_to vehicle_path(vehicle), :action => 'go' do %>
+              <div class="card-category" style="background-image: linear-gradient(rgb(0 0 0 / 30%),rgb(0 0 0 / 30%)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+                <h3><%= vehicle.name %></h3>
+              </div>
+              <% end %>
+            <% end %>
+</div>
