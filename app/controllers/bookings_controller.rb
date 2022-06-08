@@ -1,15 +1,13 @@
 class BookingsController < ApplicationController
-  def new
-    @booking = Booking.new
-  end
+
 
   def create
-    @booking = Booking.new(booking.params)
+    @booking = Booking.new(booking_params)
     @vehicle = Vehicle.find(params[:vehicle_id])
     @vehicle.available = false
     @booking.vehicle = @vehicle
     @booking.save
-    redirect_to vehicle_path(@vehicle)
+    redirect_to root_path
   end
 
   def destroy
