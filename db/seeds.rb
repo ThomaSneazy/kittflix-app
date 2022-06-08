@@ -10,7 +10,7 @@ require 'open-uri'
 Vehicle.destroy_all
 User.destroy_all
 
-user = User.new(first_name: 'bobby', last_name: 'denzel', address: 'Marseille', photo_url:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3i_qZtrjSgoPCyIOywhlX8MKOzRIaQbKU0A&usqp=CAU')
+user = User.new(first_name: 'bobby', last_name: 'denzel', address: 'Marseille', photo_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3i_qZtrjSgoPCyIOywhlX8MKOzRIaQbKU0A&usqp=CAU')
 user.email = 'test@example.com'
 user.password = 'valid_password'
 user.password_confirmation = 'valid_password'

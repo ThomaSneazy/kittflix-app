@@ -1,0 +1,14 @@
+
+<h2>Edit your car</h2>
+
+<div>
+  <%= simple_form_for [ @vehicle ] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :price_per_day %>
+    <%= f.input :category %>
+    <%= f.input :description %>
+    <%= f.input :year %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.submit "create car", class: "btn btn-primary" %>
+  <% end %>
+</div>
