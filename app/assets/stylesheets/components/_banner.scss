@@ -1,8 +1,19 @@
 .banner {
   background-size: cover;
-  background-position: center;
-  height: 60vh;
+  background-position: initial;
+  height: 70vh;
   border: 3px solid rgb(0, 0, 0);
+  position: relative;
+  bottom: 40px;
+  opacity: 0.7;
+}
+
+.banner img{
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+  opacity: 0.8;
 }
 
 .container-banner{
@@ -22,5 +33,13 @@
 }
 
 .small-h1{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin-top: 40px;
+  color: #ECECEC;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 60px;
+  font-weight: bold;
+  margin-right: 60px;
+  text-shadow: 2px 2px 3px rgb(160, 160, 160);
   font-size: 20px;
 }
