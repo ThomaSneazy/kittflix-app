@@ -10,11 +10,13 @@ require 'open-uri'
 Vehicle.destroy_all
 User.destroy_all
 
-user = User.new(first_name: 'bobby', last_name: 'denzel', address: 'Marseille', photo_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3i_qZtrjSgoPCyIOywhlX8MKOzRIaQbKU0A&usqp=CAU')
+user = User.new(first_name: 'bobby', last_name: 'denzel', address: 'Marseille')
 user.email = 'test@example.com'
 user.password = 'valid_password'
 user.password_confirmation = 'valid_password'
 user.save!
+img_user = URI.open('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwM5T40YEBEnWQvgQb8tGAMb1FrECSLdcRSQ&usqp=CAU')
+user.photo.attach(io: img_user, filename: "1.jpeg", content_type: 'image/jpeg')
 
 delorean = Vehicle.new(name: "Delorean", year: "1986", category: "car", description: "Offrez-vous la voiture de Retour vers le Futur. La Delorean !", user_id: user.id)
 delorean.save
