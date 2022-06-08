@@ -1,21 +1,30 @@
 
 
-<div style="margin: 20px">
-  <h1 style="color:white">Profile Page</h1>
-  <h5 style="color:white">All your cars</h5>
+
+  <h1 style="color:white; margin: 20px">Profile Page</h1>
+
+
+<div>
+  <%= link_to 'Add a car', new_vehicle_path  %>
 </div>
 
 
-<h3 style="color:hotpink; text-align: center"><%= @user.email %></h3>
-<h3 style="color:white; text-align: center"><%= @user.first_name %>  <%= @user.last_name %></h3>
-<img src="<%= @user.photo_url %>" alt="" style="width: 200px; border-radius: 10px">
+<h3 style="color:hotpink; text-align: center"><%= current_user.email %></h3>
+<h3 style="color:white; text-align: center"><%= current_user.first_name %>  <%= current_user.last_name %></h3>
+<img src="<%= current_user.photo_url %>" alt="" style="width: 200px; border-radius: 10px">
 
-
+<h5 style="color:white;margin: 20px">All your cars</h5>
 <div style="display: flex; flex-direction: column">
-    <% @vehicles.each do |vehicle| %>
+    <% current_user.vehicles.each do |vehicle| %>
         <ul>
           <li><%= vehicle.name %></li>
           <li><%= vehicle.year %></li>
+          <%= link_to edit_vehicle_path(vehicle) do %>
+            <li><i class="fa-solid fa-pencil"></i></li>
+          <% end %>
+          <%= link_to vehicle_path(vehicle), method: :delete, data: { confirm: "Are you sure?" } do %>
+            <li><i class="fa-solid fa-trash"></i></li>
+          <% end %>
         </ul>
     <% end %>
 </div>
