@@ -7,6 +7,14 @@ class BookingsController < ApplicationController
     @vehicle.available = false
     @booking.vehicle = @vehicle
     @booking.save
+    # redirect_to root_path
+    # flash.now[:alert] = 'Successfully booked'
+    # redirect_to root_path, :notice => "Successfully booked"
+    if my_success_condition
+      flash[:success] = 'It worked!'
+    else
+      flash[:warning] = 'Something went wrong.'
+    end
     redirect_to root_path
   end
 

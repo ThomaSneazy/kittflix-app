@@ -10,7 +10,7 @@
       <%= cl_image_tag @vehicle.photos[2].key, height: 150, width: 330, crop: :fill %>
     </div>
     <div class="div4 mt-2 m-2">
-      <%= cl_image_tag @vehicle.photos[3].key, height: 150, width: 330 crop: :fill %>
+      <%= cl_image_tag @vehicle.photos[3].key, height: 150, width: 330, crop: :fill %>
     </div>
     <div class="div5 mt-2 m-2">
       <%= cl_image_tag @vehicle.photos[4].key, height: 150, width: 330, crop: :fill %>
@@ -51,4 +51,4 @@
 
 </div>
 
-<%= flash[:notice] = 'Successfully checked in' %>
+<%# <%= flash[:notice] = 'Successfully checked in' %>
