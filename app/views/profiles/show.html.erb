@@ -1,0 +1,35 @@
+
+
+
+  <h1 style="color:white; margin: 20px">Profile Page</h1>
+
+
+<div>
+  <%= link_to 'Add a car', new_vehicle_path  %>
+</div>
+
+
+<div>
+  <%= link_to 'Edit your profile', edit_user_registration_path  %>
+</div>
+
+
+<h3 style="color:hotpink; text-align: center"><%= current_user.email %></h3>
+<h3 style="color:white; text-align: center"><%= current_user.first_name %>  <%= current_user.last_name %></h3>
+<%= cl_image_tag current_user.photo.key, height: 300, width: 300, crop: :fill %>
+
+<h5 style="color:white;margin: 20px">All your cars</h5>
+<div style="display: flex; flex-direction: column">
+    <% current_user.vehicles.each do |vehicle| %>
+        <ul>
+          <li><%= vehicle.name %></li>
+          <li><%= vehicle.year %></li>
+          <%= link_to edit_vehicle_path(vehicle) do %>
+            <li><i class="fa-solid fa-pencil"></i></li>
+          <% end %>
+          <%= link_to vehicle_path(vehicle), method: :delete, data: { confirm: "Are you sure?" } do %>
+            <li><i class="fa-solid fa-trash"></i></li>
+          <% end %>
+        </ul>
+    <% end %>
+</div>
