@@ -1,13 +1,36 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(https://wallpaperaccess.com/full/360097.jpg);">
-  <div class="container-banner">
-    <h1><span class="small-h1">bring  </span><strong>FICTION</strong><span class="small-h1">to</span><strong> <br>REALITY</strong></h1>
+<%# <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(https://wallpaperaccess.com/full/360097.jpg);"> %>
+  <%# <div class="container-banner"> %>
+    <%# <% <h1><span class="small-h1">bring  </span><strong>FICTION</strong><span class="small-h1">to</span><strong> <br>REALITY</strong></h1> %>
   </div>
+ <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="banner carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://wallpaperaccess.com/full/360097.jpg" class="banner"  alt="...">
+      <h1><span class="small-h1">bring  </span><strong>FICTION</strong><span class="small-h1">to</span><strong> <br>REALITY</strong></h1>
+    </div>
+    <div class="carousel-item">
+      <img src="https://wallpaperaccess.com/full/1333809.jpg" class="banner" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://images8.alphacoders.com/291/thumb-1920-291879.jpg" class="banner" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
+<%# </div> %>
+
     <h3 class="title-card">Popular on Kittflix</h3>
 <div class="cards">
       <% @vehicles.each do |vehicle| %>
         <%= link_to vehicle_path(vehicle), :action => 'go' do %>
-          <div class="card-category" style="background-image: linear-gradient(rgb(0 0 0 / 30%),rgb(0 0 0 / 30%)), url('')">
+          <div class="card-category" style="background-image: linear-gradient(rgb(0 0 0 / 30%),rgb(0 0 0 / 30%)), url('<%= cl_image_path vehicle.photos.first.key %>')">
             <h3><%= vehicle.name %></h3>
           </div>
         <% end %>
@@ -18,7 +41,7 @@
     <div class="cards">
       <% @vehicles.each do |vehicle| %>
               <%= link_to vehicle_path(vehicle), :action => 'go' do %>
-              <div class="card-category" style="background-image: linear-gradient(rgb(0 0 0 / 30%),rgb(0 0 0 / 30%)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          <div class="card-category" style="background-image: linear-gradient(rgb(0 0 0 / 30%),rgb(0 0 0 / 30%)), url('<%= cl_image_path vehicle.photos.first.key %>')">
                 <h3><%= vehicle.name %></h3>
               </div>
               <% end %>
@@ -29,7 +52,7 @@
     <div class="cards">
       <% @vehicles.each do |vehicle| %>
               <%= link_to vehicle_path(vehicle), :action => 'go' do %>
-              <div class="card-category" style="background-image: linear-gradient(rgb(0 0 0 / 30%),rgb(0 0 0 / 30%)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          <div class="card-category" style="background-image: linear-gradient(rgb(0 0 0 / 30%),rgb(0 0 0 / 30%)), url('<%= cl_image_path vehicle.photos.first.key %>')">
                 <h3><%= vehicle.name %></h3>
               </div>
               <% end %>
