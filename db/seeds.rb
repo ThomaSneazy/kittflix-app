@@ -31,6 +31,8 @@ ecto.save
 tonnerre = Vehicle.new(name: "Tonnerre Mécanique", year: "1985", category: "motorbike", description: "Offrez-vous la moto de la série Tonnerre Mécanique", user_id: user.id)
 tonnerre.save
 
+User.create(first_name: "toto", last_name: "lebeau")
+
 img1 = URI.open('https://www.autojournal.fr/wp-content/uploads/autojournal/2021/01/delorean_dmc-12_back_to_the_future_5-750x410.jpeg')
 
 img2 = URI.open('https://www.numerama.com/wp-content/uploads/2016/01/delo.jpg')
