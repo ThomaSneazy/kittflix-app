@@ -35,7 +35,7 @@
 
 <h3 style="color:hotpink; text-align: center"><%= current_user.email %></h3>
 <h3 style="color:white; text-align: center"><%= current_user.first_name %>  <%= current_user.last_name %></h3>
-<%= cl_image_tag current_user.photo.key, height: 300, width: 300, crop: :fill %>
+<%= cl_image_tag current_user.photo.key, default_image: @default_image, height: 300, width: 300, crop: :fill %>
 
 <h5 style="color:white;margin: 20px">All your cars</h5>
 <div style="display: flex; flex-direction: column">
