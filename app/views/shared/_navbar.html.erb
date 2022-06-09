@@ -24,12 +24,21 @@
             </ul>
           </div>
         <div class="search-bar-nav">
-              <form action="" class="search-bar">
-                <input type="search" name="search" pattern=".*\S.*" required>
+        <%= form_tag vehicles_path, method: :get, class: "search-bar" do %>
+            <%= text_field_tag :query,
+              params[:query],
+              placeholder: "Find a car"%>
+            <%= submit_tag "Search", class: "search-btn" do %>
+              <span>Search</span>
+            <% end %>
+        <% end %>
+
+              <%# <form action="" class="search-bar">
+                <input type="search" name="search"  required>
                 <button class="search-btn" type="submit">
                   <span>Search</span>
                 </button>
-              </form>
+              </form> %>
         </div>
           <li class="nav-item dropdown">
            <div class="avatar-square">
