@@ -13,6 +13,25 @@
   <%= link_to 'Edit your profile', edit_user_registration_path, class: "btn btn-primary"  %>
 </div>
 
+<h3 style="color:white">Rents to validated</h3>
+<div style="margin:16px">
+   <% current_user.vehicles.each do |vehicle| %>
+      <% to_validated = vehicle.bookings.select {|el| el.validated == false}.count %>
+        <% if to_validated.positive? %>
+          <p style="color:white">You still got <%= to_validated %> Rent<%= to_validated > 1 ? 's' : '' %> to validated</p>
+        <% end %>
+    <% end %>
+</div>
+
+<h3 style="color:white">Bookings waiting validation</h3>
+<div style="margin:16px">
+  <% not_validated = current_user.bookings.select {|el| el.validated == false}.count%>
+      <% if not_validated.positive? %>
+        <p style="color:white">You still got <%= not_validated %> Booking<%= not_validated > 1 ? 's' : '' %> not validated</p>
+      <% end %>
+</div>
+
+
 
 <h3 style="color:hotpink; text-align: center"><%= current_user.email %></h3>
 <h3 style="color:white; text-align: center"><%= current_user.first_name %>  <%= current_user.last_name %></h3>
@@ -31,5 +50,50 @@
             <li><i class="fa-solid fa-trash"></i></li>
           <% end %>
         </ul>
+    <% end %>
+</div>
+
+
+<h5 style="color:green ;margin: 20px">All your Bookings</h5>
+<div style="display: flex; flex-direction: column">
+    <% current_user.bookings.each do |booking| %>
+        <ul>
+          <li><%= booking.vehicle.user.email %></li>
+          <li><%= booking.vehicle.name %></li>
+          <li><%= booking.start_date %></li>
+          <li><%= booking.end_date %></li>
+          <li><%= booking.full_price %></li>
+
+         <% if booking.validated == false %>
+            <%= link_to booking_path(booking), method: :delete, data: { confirm: "Are you sure?" } do %>
+              <li><i class="fa-solid fa-trash"></i></li>
+            <% end %>
+          <% else %>
+             <li><i class="fa-solid fa-square-check" style="color:green; font-size: 20px"></i></li>
+          <% end %>
+        </ul>
+    <% end %>
+</div>
+
+
+<h5 style="color:red ;margin: 20px">All your Rents</h5>
+<div style="display: flex; flex-direction: column">
+    <% current_user.vehicles.each do |vehicle| %>
+      <% vehicle.bookings.each do |rent| %>
+         <ul>
+          <li><%= rent.user.email %></li>
+          <li><%= rent.start_date %></li>
+          <li><%= rent.end_date %></li>
+          <li><%= rent.full_price %></li>
+          <% if rent.validated == false %>
+            <%= link_to 'Confirm', validation_path(rent), method: :patch  %>
+            <%= link_to booking_path(rent), method: :delete, data: { confirm: "Are you sure?" } do %>
+              <li><i class="fa-solid fa-trash"></i></li>
+            <% end %>
+          <% else %>
+             <li><i class="fa-solid fa-square-check" style="color:green; font-size: 20px"></i></li>
+          <% end %>
+        </ul>
+      <% end %>
     <% end %>
 </div>
