@@ -1,19 +1,18 @@
 .banner {
   background-size: cover;
   background-position: initial;
-  height: 70vh;
+  height: 80vh;
   border: 3px solid rgb(0, 0, 0);
   position: relative;
   bottom: 40px;
-  opacity: 0.7;
+  opacity: 0.9;
+
 }
 
 .banner img{
   background-size: cover;
   background-position: center;
-  height: 100vh;
   width: 100%;
-  opacity: 0.8;
 }
 
 .container-banner{
@@ -21,15 +20,43 @@
   flex-direction: row-reverse;
 }
 
-.banner h1 {
+.title-delorean {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   margin-top: 40px;
-  color: #ECECEC;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 60px;
+  color: #dddddd;
+  font-size: 70px;
   font-weight: bold;
   margin-right: 60px;
-  text-shadow: 2px 2px 3px rgb(160, 160, 160);
+  text-shadow: 2px 2px 3px rgb(151, 151, 151);
+  position: absolute;
+    left: 15vmin;
+    top: 10vmin;
+}
+
+.title-kitt {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin-top: 20px;
+  color: #dddddd;
+  font-size: 70px;
+  font-weight: bold;
+  margin-right: 60px;
+  text-shadow: 2px 2px 3px rgb(151, 151, 151);
+  position: absolute;
+    right: 8vmin;
+    top: 10vmin;
+}
+.title-batmobile {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin-top: 30px;
+  color: #dddddd;
+  font-size: 70px;
+  font-weight: bold;
+  margin-right: 60px;
+  text-shadow: 2px 2px 3px rgb(151, 151, 151);
+  position: absolute;
+    right: 30%;
+    top: 10vmin;
+    border: 1px solid black;
 }
 
 .small-h1{
@@ -39,7 +66,36 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 60px;
   font-weight: bold;
-  margin-right: 60px;
   text-shadow: 2px 2px 3px rgb(160, 160, 160);
   font-size: 20px;
+}
+
+@media screen and (max-width: 1000px) {
+  .title-delorean{
+    display: none;
+  }
+  .title-kitt{
+    display: none;
+  }
+  .title-batmobile{
+    display: none;
+  }
+  .banner{
+    height: 50vh;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .title-delorean{
+    display: none;
+  }
+  .title-kitt{
+    display: none;
+  }
+  .title-batmobile{
+    display: none;
+  }
+  .banner{
+    height: 30vh;
+  }
 }
