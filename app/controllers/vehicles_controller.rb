@@ -1,7 +1,12 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
   def index
-    @vehicles = Vehicle.all
+    if params[:query].present?
+      sql_query = "name ILIKE :query"
+      @vehicles = Vehicle.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @vehicles = Vehicle.all
+    end
     if user_signed_in?
       current_user.vehicles.each do |vehicle|
         to_validated = vehicle.bookings.select { |el| el.validated == false }.count

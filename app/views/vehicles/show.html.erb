@@ -1,3 +1,4 @@
+<p class="name-title text-white text-center"><%= @vehicle.name %></p>
 
 <div class="parent">
     <div class="div1">
@@ -18,37 +19,63 @@
 </div>
 
 
-<div class="card-description text-start bg-transparent text-white">
-<h2><strong> <%= @vehicle.name %></strong></h2>
-    <dl class="row">
-      <dt class="col-sm-2">Year</dt>
-      <dd class="col-sm-4"><%= @vehicle.year %></dd>
-    <dl class="row">
-      <dt class="col-sm-2">Type</dt>
-      <dd class="col-sm-4"><%= @vehicle.category %></dd>
-    <dl class="row">
-      <dt class="col-sm-2">Available</dt>
-      <dd class="col-sm-4"><%= @vehicle.available ? "Yes" : "Not for the moment" %></dd>
-    <dl class="row">
-      <dt class="col-sm-2">Price/day</dt>
-      <dd class="col-sm-4">10.000 £</dd>
-    <div>
-      <p class="text-start"><%= @vehicle.description %></p>
-    </div>
-</div>
+<div class="row mt-5 mb-5 mx-3">
+  <div class="col-sm-8 ">
+    <div class="card bg-transparent">
+      <div class="card-body text-white">
 
-<div class="card-booking bg-dark text-white">
-  <div class="text-center mt-0">
-    <h3>Choose your dates</h3>
+          <div class="card bg-transparent">
+
+                <div class="d-flex justify-content-between mb-3 border-bottom">
+                 <div>
+                  <p class="text-start"><%= @vehicle.description %></p>
+                </div>
+              <div class="d-flex justify-content-between">
+                <div class="pb-3">
+                  <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+                </div>
+              <div>
+                <p class="text-right">John Doe</p>
+              </div>
+            </div>
+              </div>
+          </div>
+
+          <dl>
+            <dt class="col-sm-3">Year</dt>
+            <dd class="col-sm-9"><%= @vehicle.year %></dd>
+
+            <dt class="col-sm-3">Type</dt>
+            <dd class="col-sm-9">
+              <p><%= @vehicle.category %></p>
+            </dd>
+            <dt class="col-sm-3">Available</dt>
+            <dd class="col-sm-9"><%= @vehicle.available ? "Yes" : "Not for the moment" %></dd>
+          </dl>
+
+      </div>
   </div>
-
-
-  <%= simple_form_for [@vehicle, @booking] do  |f| %>
-  <%= f.input :start_date, as: :date, html5: true %>
-  <%= f.input :end_date, as: :date, html5: true %>
-  <%= f.button :submit, 'Rent', class: "btn btn-danger" %>
-  <% end %>
-
 </div>
 
-<%# <%= flash[:notice] = 'Successfully checked in' %>
+
+<div class="col-sm-4">
+  <div class="card bg-dark">
+    <div class="card-body">
+      <div class="text-center mt-0">
+        <h3 class="font-weight-bold text-white">Choose your dates</h3>
+      </div>
+
+        <div class="text-center text-white">
+                <%= simple_form_for [@vehicle, @booking] do  |f| %>
+            <%= f.input :start_date, as: :date, html5: true %>
+            <%= f.input :end_date, as: :date, html5: true %>
+              <div class="text-center">
+                <%= f.button :submit, 'Rent', class: "text-center btn btn-danger" %>
+              </div>
+            <% end %>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
