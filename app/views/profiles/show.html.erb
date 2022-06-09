@@ -36,7 +36,7 @@
 <h3 style="color:hotpink; text-align: center"><%= current_user.email %></h3>
 <h3 style="color:white; text-align: center"><%= current_user.first_name %>  <%= current_user.last_name %></h3>
 
-<div style="height: 300px; width: 300px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : asset_path('Default-avatar.jpg')%>')">
+<div style="height: 300px; width: 300px; background-size:cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : asset_path('Default-avatar.jpg')%>')">
 
 </div>
 
