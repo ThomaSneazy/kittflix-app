@@ -68,6 +68,7 @@
             <%= link_to booking_path(booking), method: :delete, data: { confirm: "Are you sure?" } do %>
               <li><i class="fa-solid fa-trash"></i></li>
             <% end %>
+            <li><i class="fa-solid fa-square-check" style="color:red; font-size: 20px"></i></li>
           <% else %>
              <li><i class="fa-solid fa-square-check" style="color:green; font-size: 20px"></i></li>
           <% end %>

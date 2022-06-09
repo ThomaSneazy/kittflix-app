@@ -18,7 +18,11 @@
     <div class="alert alert-success" role="alert">
     <%= notice %>
     </div>
-    <p class="alert"><%= alert %></p>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <%= alert %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
     <%= yield %>
 
   </body>
