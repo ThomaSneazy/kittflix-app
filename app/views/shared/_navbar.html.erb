@@ -9,17 +9,28 @@
          <div class="navbar-links">
             <ul>
               <li>
-              <%= link_to "Home" %>
+                <%= link_to vehicles_path do %>
+                <%= 'Home' %>
+                <% end %>
               </li>
               <li>
-              <%= link_to "Promotions" %>
+                <%= link_to "Promotions" %>
               </li>
               <li>
-              <%= link_to "My List" %>
+                <%= link_to profile_path do %>
+                <%= 'My list' %>
+                <% end %>
               </li>
             </ul>
           </div>
-
+        <div class="search-bar-nav">
+              <form action="" class="search-bar">
+                <input type="search" name="search" pattern=".*\S.*" required>
+                <button class="search-btn" type="submit">
+                  <span>Search</span>
+                </button>
+              </form>
+        </div>
           <li class="nav-item dropdown">
            <div class="avatar-square">
             <%= image_tag "profilnetflix.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
