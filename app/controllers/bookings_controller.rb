@@ -7,13 +7,27 @@ class BookingsController < ApplicationController
     @vehicle.available = false
     @booking.vehicle = @vehicle
     @booking.save
-    redirect_to root_path, notice: "Successfully booked"
+    @booking.user_id = current_user.id
+    number_of_day = @booking.end_date - @booking.start_date
+    @booking.full_price = @vehicle.price_per_day * number_of_day.floor
+    if @booking.save
+      redirect_to profile_path, notice: "Your request have been submited !!!"
+    else
+      redirect_to vehicle_path(@vehicle), alert: "Something went wrong, try again"
+    end
   end
 
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to root_path
+    redirect_to profile_path, alert: "Your booking is deleted"
+  end
+
+  def validation
+    @booking = Booking.find(params[:id])
+    @booking.validated = true
+    @booking.save
+    redirect_to profile_path, notice: "Your rent is confirmed"
   end
 end
 
