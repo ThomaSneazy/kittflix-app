@@ -8,7 +8,9 @@ class VehiclesController < ApplicationController
         flash.alert = "You got #{to_validated} Rent#{to_validated > 1 ? 's' : ''} to validated" if to_validated.positive?
       end
       validated = current_user.bookings.last
-      flash.alert = "Your booking of #{validated.vehicle.name} have been confirm by #{validated.vehicle.user.email}" if validated.validated == true
+      if validated
+        flash.alert = "Your booking of #{validated.vehicle.name} have been confirm by #{validated.vehicle.user.email}" if validated.validated == true
+      end
     end
   end
 
