@@ -1,6 +1,4 @@
 class BookingsController < ApplicationController
-
-
   def create
     @booking = Booking.new(booking_params)
     @vehicle = Vehicle.find(params[:vehicle_id])
@@ -8,6 +6,7 @@ class BookingsController < ApplicationController
     @booking.vehicle = @vehicle
     @booking.save
     @booking.user_id = current_user.id
+
     if @booking.end_date && @booking.start_date
       number_of_day = @booking.end_date - @booking.start_date
       @booking.full_price = @vehicle.price_per_day * number_of_day.floor
@@ -22,6 +21,7 @@ class BookingsController < ApplicationController
       else
         redirect_to vehicle_path(@vehicle), alert: "You should give valid date"
       end
+
     else
       redirect_to vehicle_path(@vehicle), alert: "You should valid date"
     end
