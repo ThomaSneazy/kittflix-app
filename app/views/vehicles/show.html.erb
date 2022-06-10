@@ -22,7 +22,7 @@
                  <div>
                   <p class="text-start"><%= @vehicle.description %></p>
                 </div>
-              <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between">
                 <div class="pb-3">
                   <%= cl_image_tag @vehicle.user.photo.key, class: "avatar-large"  %>
                 </div>
@@ -43,36 +43,64 @@
             </dd>
             <dt class="col-sm-3">Available</dt>
             <dd class="col-sm-9"><%= @vehicle.available ? "Yes" : "Not for the moment" %></dd>
-            <dt class="col-sm-3">Price per day</dt>
-            <dd class="col-sm-9"><%= @vehicle.price_per_day %></dd>
-          </dl>
 
+
+            <dt class="col-sm-3">Price</dt>
+            <dd class="col-sm-9"><%= @vehicle.price_per_day %></dd>
+
+          </dl>
       </div>
   </div>
-</div>
+  </div>
 
-
-<div class="col-sm-4">
-  <div class="card bg-dark">
-    <div class="card-body">
-      <div class="text-center mt-0">
-        <h3 class="font-weight-bold text-white">Choose your dates</h3>
-      </div>
-
-        <div class="text-center text-white">
-                <%= simple_form_for [@vehicle, @booking] do  |f| %>
-            <%= f.input :start_date, as: :date, html5: true, class: 'start_date' %>
-            <%= f.input :end_date, as: :date, html5: true, class: 'end_date' %>
-              <div class="text-center" id="price" data-price="<%= @vehicle.price_per_day %>">
-                <%= f.button :submit, 'Rent',
-                class: "text-center btn btn-danger",
-                id: "submit",
-                :data => {:bs_toggle => "modal", :bs_target => "#exampleModal"} %>
-              </div>
-            <% end %>
+<% unless current_user.id == @vehicle.user.id %>
+  <div class="col-sm-4">
+    <div class="card bg-dark">
+      <div class="card-body">
+        <div class="text-center mt-0">
+          <h3 class="font-weight-bold text-white">Choose your dates</h3>
         </div>
+
+          <div class="text-center text-white">
+                  <%= simple_form_for [@vehicle, @booking] do  |f| %>
+              <%= f.input :start_date, as: :date, html5: true %>
+              <%= f.input :end_date, as: :date, html5: true %>
+                <div class="text-center">
+                  <%= f.button :submit, 'Rent', class: "text-center btn btn-danger" %>
+                </div>
+              <% end %>
+          </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+<% end %>
+
+
+<div class="reviews">
+  <h5 class="mx-3">Comments :</h5>
+
+<% @reviews.each do |review|%>
+    <div class="card-product mx-5 bg-dark">
+      <div class="card-product-infos">
+      <% review.rating.to_i.times do  %>
+        <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color:goldenrod"></i>
+      <% end %>
+         <p><%= review.content %></p>
+         <%= review.vehicle.user.first_name  %>
+
+      </div>
+    </div>
+  <% end %>
+
+<div class="m-5 p-5">
+  <div class="card mb-2">
+    <div class="card-body mx-2">
+      <%= simple_form_for([@vehicle, @review], remote: true) do  |f| %>
+        <%= f.input :content, placeholder: "How was the trip ?"%>
+        <%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "How would you rate the trip ?", input_html: { data: { controller: "jquery-bar-rating" } } %>
+        <%= f.submit class:"btn btn-flat" %>
+      <% end %>
   </div>
 </div>
