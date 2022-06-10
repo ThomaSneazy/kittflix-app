@@ -10,10 +10,10 @@ require 'open-uri'
 Vehicle.destroy_all
 User.destroy_all
 
-user = User.new(first_name: 'bobby', last_name: 'denzel', address: 'Marseille')
-user.email = 'test@example.com'
-user.password = 'valid_password'
-user.password_confirmation = 'valid_password'
+user = User.new(first_name: 'Bruce', last_name: 'Wayne', address: 'Marseille')
+user.email = 'azerty@gmail.com'
+user.password = 'azerty'
+user.password_confirmation = 'azerty'
 user.save!
 img_user = URI.open('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwM5T40YEBEnWQvgQb8tGAMb1FrECSLdcRSQ&usqp=CAU')
 user.photo.attach(io: img_user, filename: "1.jpeg", content_type: 'image/jpeg')
@@ -23,14 +23,18 @@ delorean = Vehicle.new(name: "Delorean", year: "1986", category: "car",price_per
 delorean.save
 kitt = Vehicle.new(name: "Kitt", year: "1982", category: "car",price_per_day: 130 , description: "Rent the famous car from the TV show Knight Rider, K.I.T.T", user_id: user.id)
 kitt.save
-batmobile = Vehicle.new(name: "Batmobile", year: "2008", category: "car", price_per_day: 170, description: "Rent the fantastic Batmobile from The Dark Knight movie", user_id: user.id)
-batmobile.save
 torino = Vehicle.new(name: "Ford Gran Torino", year: "1972", category: "car", price_per_day: 97, description: "Rent the famous Gran Torino from the TV show Starsky & Hutch", user_id: user.id)
 torino.save
 ecto = Vehicle.new(name: "Ecto-1", year: "1984", category: "car", price_per_day: 56.20, description: "Rent the iconic GhostBusters car, the Ecto-1 !", user_id: user.id)
 ecto.save
-tonnerre = Vehicle.new(name: "Tonnerre Mécanique", year: "1985", category: "motorbike", price_per_day: 76, description: "Offrez-vous la moto de la série Tonnerre Mécanique", user_id: user.id)
+tonnerre = Vehicle.new(name: "Tonnerre Mecanique", year: "1985", category: "motorbike", price_per_day: 180, description: "Offrez-vous la Motorbike 1985 de la série Storm hawk", user_id: user.id)
 tonnerre.save
+bat92 = Vehicle.new(name: "Batmobile 1992", year: "1992", category: "car", price_per_day: 200, description: "Offrez-vous la Batmobile 1992 de la série Batman", user_id: user.id)
+bat92.save
+bat08 = Vehicle.new(name: "Batmobile 2008", year: "2008", category: "car", price_per_day: 300, description: "Offrez-vous la Batmobile 1989 de la série Batman", user_id: user.id)
+bat08.save
+bat89 = Vehicle.new(name: "Batmobile 1989", year: "1989", category: "car", price_per_day: 150, description: "Offrez-vous la Batmobile 1989 de la série Batman", user_id: user.id)
+bat89.save
 
 User.create(first_name: "toto", last_name: "lebeau")
 
@@ -66,20 +70,52 @@ photos_kitt.each_with_index do |photo, index|
   kitt.photos.attach(io: photo, filename: "#{index}.jpeg", content_type: 'image/jpeg')
 end
 
-img1_bat = URI.open('https://sportauto.autojournal.fr/wp-content/uploads/sportauto/2022/03/batmobile_the_tumbler_7-562x410.jpeg')
+img1_bat08 = URI.open('https://sportauto.autojournal.fr/wp-content/uploads/sportauto/2022/03/batmobile_the_tumbler_7-562x410.jpeg')
 
-img2_bat = URI.open('https://www.tomsguide.fr/content/uploads/sites/2/2020/05/batmobile-dark-knight.jpg')
+img2_bat08 = URI.open('https://www.tomsguide.fr/content/uploads/sites/2/2020/05/batmobile-dark-knight.jpg')
 
-img3_bat = URI.open('https://p5.storage.canalblog.com/56/45/235515/14188774.jpg')
+img3_bat08 = URI.open('https://p5.storage.canalblog.com/56/45/235515/14188774.jpg')
 
-img4_bat = URI.open('https://img4.autodeclics.com/11/2022/02/photo_article/105061/43220/800-L-la-batmobile-passe-llectrique-un-modle-disponible-lachat.jpg')
+img4_bat08 = URI.open('https://img4.autodeclics.com/11/2022/02/photo_article/105061/43220/800-L-la-batmobile-passe-llectrique-un-modle-disponible-lachat.jpg')
 
-img5_bat = URI.open('https://cimg1.ibsrv.net/ibimg/hgm/800x450-1/100/357/tumbler-batmobile_100357173.jpg')
+img5_bat08 = URI.open('https://cimg1.ibsrv.net/ibimg/hgm/800x450-1/100/357/tumbler-batmobile_100357173.jpg')
 
-photos_bat = [img1_bat, img2_bat, img3_bat, img4_bat, img5_bat]
+photos_bat08 = [img1_bat08, img2_bat08, img3_bat08, img4_bat08, img5_bat08]
 
-photos_bat.each_with_index do |photo, index|
-  batmobile.photos.attach(io: photo, filename: "#{index}.jpeg", content_type: 'image/jpeg')
+photos_bat08.each_with_index do |photo, index|
+  bat08.photos.attach(io: photo, filename: "#{index}.jpeg", content_type: 'image/jpeg')
+end
+
+img1_bat92 = URI.open('https://www.fanactu.com/medias/batman-la-batmobile-de-la-serie-animee-de-1992-existe-en-vrai_11540/batmobile-serie-animee-01-desktop-196294.jpg')
+
+img2_bat92 = URI.open('https://cdn.motor1.com/images/mgl/rRMY/s3/2008-15783-1989-batmobile1.webp')
+
+img3_bat92 = URI.open('https://bucket.carmodel.com/images/cm-lg/132600-1.jpg')
+
+img4_bat92 = URI.open('https://cdn.motor1.com/images/mgl/3RyA/s3/2008-15772-1989-batmobile1.webp')
+
+img5_bat92 = URI.open('https://www.fanactu.com/medias/batman-la-batmobile-de-la-serie-animee-de-1992-existe-en-vrai_11540/batmobile-serie-animee-01-desktop-196294.jpg')
+
+photos_bat92 = [img1_bat92, img2_bat92, img3_bat92, img4_bat92, img5_bat92]
+
+photos_bat92.each_with_index do |photo, index|
+  bat92.photos.attach(io: photo, filename: "#{index}.jpeg", content_type: 'image/jpeg')
+end
+
+img1_bat89 = URI.open('https://www.mintinbox.net/wp-content/uploads/2019/11/PromoPhoto.jpg')
+
+img2_bat89 = URI.open('https://passionautoretro.tv/images/uploads/PAR-images/322/batmobile-to-wiki-by-zachi-evenor_(1989)__main.jpg')
+
+img3_bat89 = URI.open('https://www.autoplus.fr/wp-content/uploads/autoplus/2020/12/batmobile-1989-une-replique-bientot-vendre-615x410.jpeg')
+
+img4_bat89 = URI.open('https://s1.cdn.autoevolution.com/images/news/1989-batmobile-is-looking-for-a-dark-knight-will-you-be-the-one-165906-7.jpeg')
+
+img5_bat89 = URI.open('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTobNbqBCL_V8xAaKIKpG2cITQyLvFSZOBH77QiDTiGuycqVpShL1DICXW8psDOnqyZtBg&usqp=CAU')
+
+photos_bat89 = [img1_bat89, img2_bat89, img3_bat89, img4_bat89, img5_bat89]
+
+photos_bat89.each_with_index do |photo, index|
+  bat89.photos.attach(io: photo, filename: "#{index}.jpeg", content_type: 'image/jpeg')
 end
 
 img1_torino = URI.open('https://www.lrm-collection.fr/Photo_big_Ford_Torino-starsky-et-hutch_1975_6986_1.jpg')
