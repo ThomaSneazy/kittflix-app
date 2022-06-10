@@ -52,29 +52,30 @@
       </div>
   </div>
   </div>
-
-<% unless current_user.id == @vehicle.user.id %>
-  <div class="col-sm-4">
-    <div class="card bg-dark">
-      <div class="card-body">
-        <div class="text-center mt-0">
-          <h3 class="font-weight-bold text-white">Choose your dates</h3>
-        </div>
-
-          <div class="text-center text-white">
-                  <%= simple_form_for [@vehicle, @booking] do  |f| %>
-              <%= f.input :start_date, as: :date, html5: true %>
-              <%= f.input :end_date, as: :date, html5: true %>
-                <div class="text-center">
-                  <%= f.button :submit, 'Rent', class: "text-center btn btn-danger" %>
-                </div>
-              <% end %>
+<% if user_signed_in? %>
+  <% unless current_user.id == @vehicle.user.id %>
+    <div class="col-sm-4">
+      <div class="card bg-dark">
+        <div class="card-body">
+          <div class="text-center mt-0">
+            <h3 class="font-weight-bold text-white">Choose your dates</h3>
           </div>
+
+            <div class="text-center text-white">
+                    <%= simple_form_for [@vehicle, @booking] do  |f| %>
+                <%= f.input :start_date, as: :date, html5: true %>
+                <%= f.input :end_date, as: :date, html5: true %>
+                  <div class="text-center">
+                    <%= f.button :submit, 'Rent', class: "text-center btn btn-danger" %>
+                  </div>
+                <% end %>
+            </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
 
 
