@@ -7,7 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
 
-Booking.destroy.all
 Vehicle.destroy_all
 User.destroy_all
 
@@ -19,6 +18,7 @@ user.save!
 img_user = URI.open('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwM5T40YEBEnWQvgQb8tGAMb1FrECSLdcRSQ&usqp=CAU')
 user.photo.attach(io: img_user, filename: "1.jpeg", content_type: 'image/jpeg')
 
+puts 'user save'
 
 delorean = Vehicle.new(name: "Delorean", year: "1986", category: "car",price_per_day: 90 , description: "Rent the famous car from Back To The Future, the Delorean !", user_id: user.id)
 delorean.save
@@ -31,8 +31,7 @@ ecto.save
 tonnerre = Vehicle.new(name: "Tonnerre Mecanique", year: "1985", category: "motorbike", price_per_day: 180, description: "Offrez-vous la Motorbike 1985 de la série Storm hawk", user_id: user.id)
 tonnerre.save
 
-
-User.create(first_name: "toto", last_name: "lebeau")
+puts 'car save'
 
 img1 = URI.open('https://www.autojournal.fr/wp-content/uploads/autojournal/2021/01/delorean_dmc-12_back_to_the_future_5-750x410.jpeg')
 
@@ -50,6 +49,8 @@ photos.each_with_index do |photo, index|
   delorean.photos.attach(io: photo, filename: "#{index}.jpeg", content_type: 'image/jpeg')
 end
 
+puts 'deklorean save'
+
 img1_kitt = URI.open('https://www.turbo.fr/sites/default/files/2019-11/IMG_9420.jpg')
 
 img2_kitt = URI.open('https://upload.wikimedia.org/wikipedia/commons/2/20/Knight2000_ex107.jpg')
@@ -66,7 +67,7 @@ photos_kitt.each_with_index do |photo, index|
   kitt.photos.attach(io: photo, filename: "#{index}.jpeg", content_type: 'image/jpeg')
 end
 
-
+puts 'kitt save'
 
 img1_torino = URI.open('https://www.lrm-collection.fr/Photo_big_Ford_Torino-starsky-et-hutch_1975_6986_1.jpg')
 
@@ -84,6 +85,7 @@ photos_torino.each_with_index do |photo, index|
   torino.photos.attach(io: photo, filename: "#{index}.jpeg", content_type: 'image/jpeg')
 end
 
+puts 'torino save'
 img1_ecto = URI.open('https://static.turbosquid.com/Preview/2019/10/17__12_55_47/1.jpeg70750952-4F0D-456E-9D47-2F63DFB95CB7Large.jpg')
 
 img2_ecto = URI.open('https://img4.autodeclics.com/photo_article/103047/41437/1200-L-pourquoi-les-prix-de-la-voiture-mythique-de-ghostbusters-explosent.jpg')
@@ -99,6 +101,7 @@ photos_ecto = [img1_ecto, img2_ecto, img3_ecto, img4_ecto, img5_ecto]
 photos_ecto.each_with_index do |photo, index|
   ecto.photos.attach(io: photo, filename: "#{index}.jpeg", content_type: 'image/jpeg')
 end
+puts 'ecto save'
 
 img1_tonnerre = URI.open('https://www.leguidevert.com/_lgv/img_forum/2007/07/a33609.jpg')
 
@@ -115,5 +118,5 @@ photos_tonnerre = [img1_tonnerre, img2_tonnerre, img3_tonnerre, img4_tonnerre, i
 photos_tonnerre.each_with_index do |photo, index|
   tonnerre.photos.attach(io: photo, filename: "#{index}.jpeg", content_type: 'image/jpeg')
 end
-
-puts "saved"
+puts 'tonnerrre save'
+puts " all saved"
