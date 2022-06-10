@@ -80,17 +80,23 @@
 </div>
 
 
-<%# <div class="m-5 p-5">
+<div class="m-5 p-5">
   <div class="card mb-2">
-      <div class="card-body">
-        <h5 class="card-title">Name</h5>
-         <p class="card-text"><small class="text-muted">May 2024</small></p>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      </div>
+    <div class="card-body">
+      <%= simple_form_for([@vehicle, @review], remote: true) do  |f| %>
+        <%= f.input :content, placeholder: "How was the trip ?"%>
+        <%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "How would you rate the trip ?", input_html: { data: { controller: "jquery-bar-rating" } } %>
+        <%= f.submit class:"btn btn-flat" %>
+      <% end %>
   </div>
-</div> %>
+</div>
 
-<%# <%= simple_form_for([ @vehicle, @review ]) do |f| %>
-  <%# <%= f.input :content %>
-  <%# <%= f.button :submit %>
-<%# <% end %>
+<%# <div id="reviews">
+  <% if @vehicle.reviews.blank? %>
+    <%# Be the first to leave a review for <%= @vehicle.name %>
+  <%# <% else %>
+    <%# <% @vehicle.reviews.each do |review| %>
+      <%# <p id="review-<%= review.id"><%= review.content</p> %>
+    <%# <% end %>
+  <%# <% end %>
+<%# </div> %>
