@@ -72,3 +72,9 @@ body{
   font-size: 3em;
   letter-spacing: -2px;
 }
+
+.card-body {
+    min-height: 150px;
+    min-width: 300px;
+    margin-right: 5px;
+}
