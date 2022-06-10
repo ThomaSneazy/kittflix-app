@@ -1,22 +1,13 @@
 <br><br>
 <p class="name-title text-white text-center"><%= @vehicle.name %></p>
 
+
 <div class="parent">
-    <div class="div1">
-      <%= cl_image_tag @vehicle.photos[0].key, height: "100%", width: "100%" %>
+  <% @vehicle.photos.each_with_index do |photo, index|  %>
+    <div class="div<%= index + 1 %>">
+      <%= cl_image_tag photo.key, height: "100%", width: "100%" %>
     </div>
-    <div class="div2 ">
-      <%= cl_image_tag @vehicle.photos[1].key, height: "100%", width: "100%" %>
-    </div>
-    <div class="div3 ">
-      <%= cl_image_tag @vehicle.photos[2].key, height: "100%", width: "100%" %>
-    </div>
-    <div class="div4 ">
-      <%= cl_image_tag @vehicle.photos[3].key, height: "100%", width: "100%"  %>
-    </div>
-    <div class="div5 ">
-      <%= cl_image_tag @vehicle.photos[4].key, height: "100%", width: "100%" %>
-    </div>
+  <% end %>
 </div>
 
 
@@ -52,6 +43,8 @@
             </dd>
             <dt class="col-sm-3">Available</dt>
             <dd class="col-sm-9"><%= @vehicle.available ? "Yes" : "Not for the moment" %></dd>
+            <dt class="col-sm-3">Price per day</dt>
+            <dd class="col-sm-9"><%= @vehicle.price_per_day %></dd>
           </dl>
 
       </div>
