@@ -1,5 +1,5 @@
 class VehiclesController < ApplicationController
-  before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
+  before_action :set_vehicle, only: %i[show edit update destroy]
   def index
     if params[:query].present?
       sql_query = "name ILIKE :query"
@@ -10,11 +10,13 @@ class VehiclesController < ApplicationController
     if user_signed_in?
       current_user.vehicles.each do |vehicle|
         to_validated = vehicle.bookings.select { |el| el.validated == false }.count
-        flash.alert = "You got #{to_validated} Rent#{to_validated > 1 ? 's' : ''} to validated" if to_validated.positive?
+        if to_validated.positive?
+          flash.alert = "You got #{to_validated} Rent#{to_validated > 1 ? 's' : ''} to validated"
+        end
       end
       validated = current_user.bookings.last
-      if validated
-        flash.alert = "Your booking of #{validated.vehicle.name} have been confirm by #{validated.vehicle.user.email}" if validated.validated == true
+      if validated && (validated.validated == true)
+        flash.alert = "Your booking of #{validated.vehicle.name} have been confirm by #{validated.vehicle.user.email}"
       end
     end
   end

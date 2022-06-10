@@ -59,6 +59,8 @@
 </div>
 
 
+<div id="modal"></div>
+
 <div class="col-sm-4">
   <div class="card bg-dark">
     <div class="card-body">
@@ -71,7 +73,10 @@
             <%= f.input :start_date, as: :date, html5: true, class: 'start_date' %>
             <%= f.input :end_date, as: :date, html5: true, class: 'end_date' %>
               <div class="text-center" id="price" data-price="<%= @vehicle.price_per_day %>">
-                <%= f.button :submit, 'Rent', class: "text-center btn btn-danger", id: "submit"%>
+                <%= f.button :submit, 'Rent',
+                class: "text-center btn btn-danger",
+                id: "submit",
+                :data => {:bs_toggle => "modal", :bs_target => "#exampleModal"} %>
               </div>
             <% end %>
         </div>
