@@ -5,6 +5,7 @@ class Vehicle < ApplicationRecord
   belongs_to :user
   has_many :bookings
   validates :name, uniqueness: true, presence: true
+  validates :photos, attached: true, limit: { min: 3, max: 5 }
 
   private
 
