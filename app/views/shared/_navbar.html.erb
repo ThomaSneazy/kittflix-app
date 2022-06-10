@@ -14,9 +14,6 @@
                 <% end %>
               </li>
               <li>
-                <%= link_to "Promotions" %>
-              </li>
-              <li>
                 <%= link_to profile_path do %>
                 <%= 'My list' %>
                 <% end %>
@@ -27,8 +24,8 @@
         <%= form_tag vehicles_path, method: :get, class: "search-bar" do %>
             <%= text_field_tag :query,
               params[:query],
-              placeholder: "Find a car"%>
-            <%= submit_tag "Search", class: "search-btn" do %>
+              placeholder: "Search"%>
+            <%= submit_tag "", class: "search-btn" do %>
               <span>Search</span>
             <% end %>
         <% end %>
@@ -42,7 +39,11 @@
         </div>
           <li class="nav-item dropdown">
            <div class="avatar-square">
-            <%= image_tag "profilnetflix.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+           <% if current_user %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+             <% else %>
+             <%= image_tag "profilnetflix.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% end %>
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="navbarDropdown">
               <% if user_signed_in? %>
                 <%= link_to "Profil", profile_path(current_user), class: "dropdown-item" %>

@@ -1,21 +1,13 @@
-<p class="name-title text-white text-center mt-4"><%= @vehicle.name %></p>
+<br><br>
+<p class="name-title text-white text-center"><%= @vehicle.name %></p>
+
 
 <div class="parent">
-    <div class="div1">
-      <%= cl_image_tag @vehicle.photos[0].key, height: "100%", width: "100%" %>
+  <% @vehicle.photos.each_with_index do |photo, index|  %>
+    <div class="div<%= index + 1 %>">
+      <%= cl_image_tag photo.key, height: "100%", width: "100%" %>
     </div>
-    <div class="div2 ">
-      <%= cl_image_tag @vehicle.photos[1].key, height: "100%", width: "100%" %>
-    </div>
-    <div class="div3 ">
-      <%= cl_image_tag @vehicle.photos[2].key, height: "100%", width: "100%" %>
-    </div>
-    <div class="div4 ">
-      <%= cl_image_tag @vehicle.photos[3].key, height: "100%", width: "100%"  %>
-    </div>
-    <div class="div5 ">
-      <%= cl_image_tag @vehicle.photos[4].key, height: "100%", width: "100%" %>
-    </div>
+  <% end %>
 </div>
 
 
@@ -28,13 +20,12 @@
                 <div>
                   <p class="text-start"><%= @vehicle.description %></p>
                 </div>
-                  <div class="d-flex justify-content-between">
-                    <div class="pb-3">
-                      <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
-                    </div>
-                  <div>
-                  <p class="text-right">John Doe</p>
+              <div class="d-flex justify-content-between">
+                <div class="pb-3">
+                  <%= cl_image_tag @vehicle.user.photo.key, class: "avatar-large"  %>
                 </div>
+              <div>
+                <p class="text-right"><%= @vehicle.user.last_name %> <%= @vehicle.user.first_name %></p>
               </div>
             </div>
           </div>
