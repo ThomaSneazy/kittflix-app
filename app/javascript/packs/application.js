@@ -14,3 +14,8 @@ ActiveStorage.start()
 
 import "controllers"
 import "bootstrap"
+import { booking } from "../plugins/booking"
+
+document.addEventListener("turbolinks:load" , () => {
+  booking();
+})
