@@ -16,7 +16,8 @@ const booking = () => {
 
        const pricePerDay = price.dataset.price
        const numberOfDay = (new Date(end.value).getDate() - new Date(start.value).getDate())
-       window.alert(`Your booking will start: ${start.value} until: ${end.value}  total: ${pricePerDay * numberOfDay}  `)
+       const full_price = pricePerDay * numberOfDay
+       window.alert(`Your booking will start: ${start.value} until: ${end.value}   ${full_price < 0 ? 'Unvalid' :'total: '+ full_price }  `)
 
 //         modal.innerHTML += `
 //         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
