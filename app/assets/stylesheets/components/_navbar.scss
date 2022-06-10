@@ -34,6 +34,7 @@
   }
 }
 
+
 .navbar a{
   font-size: 15px;
 }
@@ -198,6 +199,21 @@ body {
 	.search-btn {
 		background: #959595;
 	}
+}
+
+
+@media screen and (max-width: 1200px) {
+  .avatar-square{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .navbar-brand img{
+    width: 120px;
+  }
+  .navbar-links{
+    display: none;
+  }
 }
 
  @media screen and (max-width: 1000px) {

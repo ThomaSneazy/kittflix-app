@@ -7,6 +7,7 @@ class BookingsController < ApplicationController
     @booking.save
     @booking.user_id = current_user.id
 
+
     if @booking.end_date && @booking.start_date
       number_of_day = @booking.end_date - @booking.start_date
       @booking.full_price = @vehicle.price_per_day * number_of_day.floor

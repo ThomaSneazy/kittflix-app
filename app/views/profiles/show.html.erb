@@ -1,103 +1,110 @@
+<div class="card-profile">
+  <div class="avatar-profile" style="height: 150px; width: 150px; background-size:cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0)), url('<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : asset_path('Default-avatar.jpg')%>')">
+  </div>
 
-
-
-  <h1 style="color:white; margin: 20px">Profile Page</h1>
-
-
-<div style="margin:16px">
-  <%= link_to 'Add a car', new_vehicle_path, class: "btn btn-info"  %>
+  <!--<div class="title-avatar"><h3 class="style-email"><%= current_user.email %></h3>-->
+  <h3 class="style-fullname"><%= current_user.first_name %>  <%= current_user.last_name %></h3>
+  </div>
 </div>
 
-<br>
-<div style="margin:16px">
-  <%= link_to 'Edit your profile', edit_user_registration_path, class: "btn btn-primary"  %>
-</div>
+<div class="container-btn">
+  <div style="margin:16px">
+    <%= link_to 'Add a car', new_vehicle_path, class: "btn-add btn btn-light"  %>
+  </div>
 
-<h3 style="color:white">Rents to validated</h3>
-<div style="margin:16px">
-   <% current_user.vehicles.each do |vehicle| %>
-      <% to_validated = vehicle.bookings.select {|el| el.validated == false}.count %>
-        <% if to_validated.positive? %>
-          <p style="color:white">You still got <%= to_validated %> Rent<%= to_validated > 1 ? 's' : '' %> to validated</p>
-        <% end %>
-    <% end %>
-</div>
 
-<h3 style="color:white">Bookings waiting validation</h3>
-<div style="margin:16px">
-  <% not_validated = current_user.bookings.select {|el| el.validated == false}.count%>
-      <% if not_validated.positive? %>
-        <p style="color:white">You still got <%= not_validated %> Booking<%= not_validated > 1 ? 's' : '' %> not validated</p>
-      <% end %>
+  <div style="margin:16px">
+    <%= link_to 'Edit your profile', edit_user_registration_path, class: "btn-edit btn btn-light"  %>
+  </div>
 </div>
 
 
 
-<h3 style="color:hotpink; text-align: center"><%= current_user.email %></h3>
-<h3 style="color:white; text-align: center"><%= current_user.first_name %>  <%= current_user.last_name %></h3>
+<div class="container-rents">
+    <h4 style="color:white">Rents to validate</h4>
+      <div style="margin:16px">
+        <% current_user.vehicles.each do |vehicle| %>
+            <% to_validated = vehicle.bookings.select {|el| el.validated == false}.count %>
+              <% if to_validated.positive? %>
+                <p style="color:white">You still got <%= to_validated %> Rent<%= to_validated > 1 ? 's' : '' %> to validated</p>
+              <% end %>
+          <% end %>
+      </div>
 
-<div style="height: 300px; width: 300px; background-size:cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : asset_path('Default-avatar.jpg')%>')">
-
+    <h4 style="color:white">Bookings awaiting validation</h4>
+      <div>
+        <% not_validated = current_user.bookings.select {|el| el.validated == false}.count%>
+            <% if not_validated.positive? %>
+              <p style="color:white">You still got <%= not_validated %> Booking<%= not_validated > 1 ? 's' : '' %> not validated</p>
+            <% end %>
+      </div>
 </div>
 
-<h5 style="color:white;margin: 20px">All your cars</h5>
-<div style="display: flex; flex-direction: column">
-    <% current_user.vehicles.each do |vehicle| %>
-        <ul>
+
+
+
+
+
+    <h5 class="title-card">All your Cars</h5>
+    <div class="cards">
+      <% current_user.vehicles.each do |vehicle| %>
+        <div class="card-category" style="background-image: linear-gradient(rgb(0 0 0 / 30%),rgb(0 0 0 / 30%)), url('<%= cl_image_path vehicle.photos.first.key %>')">
+          <br>
+          <ul>
           <li><%= vehicle.name %></li>
-          <li><%= vehicle.year %></li>
           <%= link_to edit_vehicle_path(vehicle) do %>
-            <li><i class="fa-solid fa-pencil"></i></li>
+           <li><i class="fa-solid fa-pencil"></i></li>
           <% end %>
           <%= link_to vehicle_path(vehicle), method: :delete, data: { confirm: "Are you sure?" } do %>
             <li><i class="fa-solid fa-trash"></i></li>
+          </ul>
+            </div>
           <% end %>
-        </ul>
-    <% end %>
-</div>
-
-
-<h5 style="color:green ;margin: 20px">All your Bookings</h5>
-<div style="display: flex; flex-direction: column">
-    <% current_user.bookings.each do |booking| %>
-        <ul>
-          <li><%= booking.vehicle.user.email %></li>
-          <li><%= booking.vehicle.name %></li>
-          <li><%= booking.start_date %></li>
-          <li><%= booking.end_date %></li>
-          <li><%= booking.full_price %></li>
-
-         <% if booking.validated == false %>
-            <%= link_to booking_path(booking), method: :delete, data: { confirm: "Are you sure?" } do %>
-              <li><i class="fa-solid fa-trash"></i></li>
-            <% end %>
-            <li><i class="fa-solid fa-square-check" style="color:red; font-size: 20px"></i></li>
-          <% else %>
-             <li><i class="fa-solid fa-square-check" style="color:green; font-size: 20px"></i></li>
-          <% end %>
-        </ul>
-    <% end %>
-</div>
-
-
-<h5 style="color:red ;margin: 20px">All your Rents</h5>
-<div style="display: flex; flex-direction: column">
-    <% current_user.vehicles.each do |vehicle| %>
-      <% vehicle.bookings.each do |rent| %>
-         <ul>
-          <li><%= rent.user.email %></li>
-          <li><%= rent.start_date %></li>
-          <li><%= rent.end_date %></li>
-          <li><%= rent.full_price %></li>
-          <% if rent.validated == false %>
-            <%= link_to 'Confirm', validation_path(rent), method: :patch  %>
-            <%= link_to booking_path(rent), method: :delete, data: { confirm: "Are you sure?" } do %>
-              <li><i class="fa-solid fa-trash"></i></li>
-            <% end %>
-          <% else %>
-             <li><i class="fa-solid fa-square-check" style="color:green; font-size: 20px"></i></li>
-          <% end %>
-        </ul>
       <% end %>
-    <% end %>
-</div>
+    </div>
+
+
+      <h5 class="title-card">All your Bookings</h5>
+        <div class="cards">
+            <% current_user.bookings.each do |booking| %>
+                <ul>
+                  <li><%= booking.vehicle.user.email %></li>
+                  <li><%= booking.vehicle.name %></li>
+                  <li><%= booking.start_date %></li>
+                  <li><%= booking.end_date %></li>
+                  <li><%= booking.full_price %></li>
+
+                <% if booking.validated == false %>
+                    <%= link_to booking_path(booking), method: :delete, data: { confirm: "Are you sure?" } do %>
+                      <li><i class="fa-solid fa-trash"></i></li>
+                    <% end %>
+                    <li><i class="fa-solid fa-square-check" style="color:red; font-size: 20px"></i></li>
+                  <% else %>
+                    <li><i class="fa-solid fa-square-check" style="color:green; font-size: 20px"></i></li>
+                  <% end %>
+                </ul>
+            <% end %>
+        </div>
+
+
+    <h5 class="title-card">All your Rents</h5>
+    <div class="cards">
+        <% current_user.vehicles.each do |vehicle| %>
+          <% vehicle.bookings.each do |rent| %>
+            <ul>
+              <li><%= rent.user.email %></li>
+              <li><%= rent.start_date %></li>
+              <li><%= rent.end_date %></li>
+              <li><%= rent.full_price %></li>
+              <% if rent.validated == false %>
+                <%= link_to 'Confirm', validation_path(rent), method: :patch  %>
+                <%= link_to booking_path(rent), method: :delete, data: { confirm: "Are you sure?" } do %>
+                  <li><i class="fa-solid fa-trash"></i></li>
+                <% end %>
+              <% else %>
+                <li><i class="fa-solid fa-square-check" style="color:green; font-size: 20px"></i></li>
+              <% end %>
+            </ul>
+          <% end %>
+        <% end %>
+    </div>
