@@ -10,11 +10,12 @@ class BookingsController < ApplicationController
     @booking.user_id = current_user.id
     number_of_day = @booking.end_date - @booking.start_date
     @booking.full_price = @vehicle.price_per_day * number_of_day.floor
-    if @booking.save
-      redirect_to profile_path, notice: "Your request have been submited !!!"
-    else
-      redirect_to vehicle_path(@vehicle), alert: "Something went wrong, try again"
-    end
+    @booking.save
+    # if @booking.save
+    #   redirect_to vehicle_path(@vehicle), notice: "Your request have been submited !!!"
+    # else
+    #   redirect_to vehicle_path(@vehicle), alert: "Something went wrong, try again"
+    # end
   end
 
   def destroy

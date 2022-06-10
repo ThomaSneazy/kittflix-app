@@ -68,10 +68,10 @@
 
         <div class="text-center text-white">
                 <%= simple_form_for [@vehicle, @booking] do  |f| %>
-            <%= f.input :start_date, as: :date, html5: true %>
-            <%= f.input :end_date, as: :date, html5: true %>
-              <div class="text-center">
-                <%= f.button :submit, 'Rent', class: "text-center btn btn-danger" %>
+            <%= f.input :start_date, as: :date, html5: true, class: 'start_date' %>
+            <%= f.input :end_date, as: :date, html5: true, class: 'end_date' %>
+              <div class="text-center" id="price" data-price="<%= @vehicle.price_per_day %>">
+                <%= f.button :submit, 'Rent', class: "text-center btn btn-danger", id: "submit"%>
               </div>
             <% end %>
         </div>
