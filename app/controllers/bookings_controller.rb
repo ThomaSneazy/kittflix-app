@@ -11,7 +11,7 @@ class BookingsController < ApplicationController
     number_of_day = @booking.end_date - @booking.start_date
     @booking.full_price = (@vehicle.price_per_day * number_of_day.floor).round(2)
     if @booking.save
-      redirect_to profile_path, notice: "Your request have been submited !!!"
+      redirect_to profile_path, notice: "Your request has been submitted !!"
     else
       redirect_to vehicle_path(@vehicle), alert: "Something went wrong, try again"
     end

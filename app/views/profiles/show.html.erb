@@ -18,6 +18,23 @@
   </div>
 </div>
 
+
+<h3 style="color:white">Rents to validate</h3>
+<div style="margin:16px">
+   <% current_user.vehicles.each do |vehicle| %>
+      <% to_validated = vehicle.bookings.select {|el| el.validated == false}.count %>
+        <% if to_validated.positive? %>
+          <p style="color:white">You still got <%= to_validated %> Rent<%= to_validated > 1 ? 's' : '' %> to validated</p>
+        <% end %>
+    <% end %>
+</div>
+
+<h3 style="color:white">Bookings awaiting validation</h3>
+<div style="margin:16px">
+  <% not_validated = current_user.bookings.select {|el| el.validated == false}.count%>
+      <% if not_validated.positive? %>
+        <p style="color:white">You still got <%= not_validated %> Booking<%= not_validated > 1 ? 's' : '' %> not validated</p>
+      <% end %>
 <div class="container-rents">
     <h4 style="color:white">Rents to validated</h4>
       <div style="margin:16px">
