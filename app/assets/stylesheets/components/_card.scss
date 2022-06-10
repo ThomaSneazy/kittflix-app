@@ -5,17 +5,76 @@
   overflow-x: scroll;
 }
 
+body{
+  margin: 20px;
+}
+
+.card-profile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.style-fullname{
+  font-size: 25px;
+  margin-top: 5px;
+  color: white;
+  align-items: center;
+}
+
+.container-btn{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn-edit{
+  color: rgb(219, 219, 219);
+  font-size: 15px;
+  background-color: rgba(0, 114, 190, 0.739);
+}
+
+.btn-add{
+  color: rgb(219, 219, 219);
+  font-size: 15px;
+  background-color: rgba(231, 154, 0, 0.739);
+}
+
 .title-card{
   color: #ECECEC;
   font-size: 20px;
-  font-family: 'Helvetica';
+  font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   margin: 5px;
   padding-left: 10px;
 }
 
+.container-booking a, ul, li{
+  color: white;
+  font-size: 15px;
+}
+
+
+
+.container-rents{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 20px;
+  font-size: 20px;
+}
+
 .cards a{
   text-decoration: none;
+  color: white;
+}
+
+.mycars-profile ul, li{
+  bottom: 10px;
+  color: white;
+}
+
+.ul-profile{
+  color: black;
 }
 
 .card-category {

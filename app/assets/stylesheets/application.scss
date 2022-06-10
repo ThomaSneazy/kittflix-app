@@ -14,6 +14,9 @@
 @import "components/banner";
 @import "components/card";
 
+h1, h2, h3, h4, p{
+  color: white;
+}
 
 body{
   background-color: #0D0D0D;
@@ -59,17 +62,12 @@ body{
     }
 //  grid for the 5 images end
 
-//avatar
-.avatar-large {
-  width: 50px;
-  border-radius: 50%;
-  border: solid 1px white;
-}
+
 
 // title car
 .name-title {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 3em;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2em;
   letter-spacing: -2px;
 }
 
