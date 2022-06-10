@@ -52,6 +52,7 @@
             </div>
 
     <h3 class="title-card">Only on Kittflix</h3>
+    <div class="cards">
       <% @vehicles.each do |vehicle| %>
               <%= link_to vehicle_path(vehicle), :action => 'go' do %>
           <div class="card-category" style="background-image: linear-gradient(rgb(0 0 0 / 30%),rgb(0 0 0 / 30%)), url('<%= cl_image_path vehicle.photos.first.key %>')">
@@ -59,4 +60,5 @@
               </div>
               <% end %>
             <% end %>
+          </div>
 </div>
