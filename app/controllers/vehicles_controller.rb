@@ -22,7 +22,11 @@ class VehiclesController < ApplicationController
   def show
     @vehicle = Vehicle.find(params[:id])
     @booking = Booking.new
-    @review = Review.new
+    @reviews = []
+    @review = Review.new(vehicle: @vehicle)
+    @vehicle.reviews.each do |review|
+      @reviews << Review.find_by(id: review)
+    end
   end
 
   def new
