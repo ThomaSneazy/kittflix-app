@@ -1,0 +1,3 @@
+[submodule "kittflix-app"]
+	path = kittflix-app
+	url = https://github.com/ThomaSneazy/kittflix-app.git
